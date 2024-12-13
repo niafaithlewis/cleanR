@@ -2,6 +2,8 @@
 %2Fcloud%2Fproject%2FcleanR%2F.gitignore="DC4704D6"
 %2Fcloud%2Fproject%2FcleanR%2FDESCRIPTION="FA858D18"
 %2Fcloud%2Fproject%2FcleanR%2FR%2Fcoerce_to_numeric.R="279E8D0B"
+%2Fcloud%2Fproject%2FcleanR%2FR%2Ffind_swaps.R="FF4CF07C"
+%2Fcloud%2Fproject%2FcleanR%2FR%2Fidentify_typos.R="DA7E32FF"
 %2Fcloud%2Fproject%2FcleanR%2FR%2Fplants_clean.R="88189EDC"
 %2Fcloud%2Fproject%2FcleanR%2FR%2Fplants_test.R="F3E8AB3B"
 %2Fcloud%2Fproject%2FcleanR%2Fdata-raw%2FDATASET.R="B99457A1"

@@ -8,7 +8,7 @@ identify_and_plot_swaps(
   data,
   weight_columns,
   key_column,
-  plot_filename = "/cloud/project/cleanR/inst/extdata/swaps_plot.png",
+  plot_filename = "inst/extdata/swaps_plot.png",
   weight_diff_threshold = 1
 )
 }
