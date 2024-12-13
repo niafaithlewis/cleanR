@@ -1,3 +1,4 @@
+library(readr)
 
 plants_test <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
 
