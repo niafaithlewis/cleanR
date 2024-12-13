@@ -14,20 +14,17 @@ Imports:
     ggplot2, 
     tidyr, 
     rlang, 
-    viridis, 
-    usethis
+    viridis
 Depends: 
     R (>= 3.5)
 LazyData: true
 Suggests:
-    readxl, 
     stringdist, 
     testthat, 
     devtools, 
     roxygen2, 
     knitr, 
-    rmarkdown, 
-    readr 
+    rmarkdown 
 VignetteBuilder: knitr
 
     
