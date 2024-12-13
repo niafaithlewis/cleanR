@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-# Identify and Visualize Potential Swaps in Longitudinal Weight Data
+## Identify and Visualize Potential Swaps in Longitudinal Weight Data
 
 This vignette will describe how to use the `identify_and_plot_swaps` function from the `cleanR` package. This function is designed to compare weight measurements between separate timepoints to identify potential swaps that might have occurred in the data, where the weight for one row was swapped for the weight for another row. It specifically works in datasets where the weight increases or is expected to increase over time by detecting where the weight in an earlier timepoint exceeds the weight in a later timepoint. 
 

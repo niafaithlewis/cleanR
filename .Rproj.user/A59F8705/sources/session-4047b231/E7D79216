@@ -3,7 +3,7 @@
     "path": "/cloud/project/cleanR/vignettes/coerce_to_numeric.Rmd",
     "project_path": "cleanR/vignettes/coerce_to_numeric.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "4101204189",
     "contents": "",
     "dirty": false,
     "created": 1734067484931.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "42,0",
-        "scrollLine": "35"
+        "cursorPosition": "9,2",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1734069404,
+    "lastKnownWriteTime": 1734079721,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1734069404519,
+    "last_content_update": 1734079721914,
     "read_only": false,
     "read_only_alternatives": []
 }

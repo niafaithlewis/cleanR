@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-# Detecting Invalid 'Line' Values
+## Detecting Invalid 'Line' Values
 
 This vignette will demonstrate how to use the `detect_invalid_lines` function from the `cleanR` package to identify invalid `line` values in the plants_clean dataset that is specific to this package. This function cannot be applied to just any datatset, since it depends on a feature specific to the plants dataset included. 
 
@@ -46,6 +46,3 @@ invalid_lines <- detect_invalid_lines(plants_clean)
 ```
 
 It printed out a dataframe of the 3 possible instances of invalid lines and suggested corrections for each. 
-
-
-Explanation of Output 

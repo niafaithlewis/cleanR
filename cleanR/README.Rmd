@@ -40,11 +40,13 @@ Additionally, this package contains a 4th function that is particularly suited t
 Here's how you can install the cleanR package: 
 
 ``` r
-# Install devtools if not already installed
-install.packages("devtools")
+# Install the following packages:
+install.packages(c("devtools", "readr", "stringdist"))
+
+
 
 # Install cleanR from GitHub
-devtools::install_github("niafaithlewis/cleanR")
+devtools::install_github("niafaithlewis/cleanR/cleanR")
 ```
 
 ## Example 1
@@ -56,7 +58,9 @@ Here is an example of the invalid lines function in action:
 library(cleanR)
 
 ### Load data
-plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+data("plants_clean")
+
+head(plants_clean)
 
 invalid_lines <- detect_invalid_lines(plants_clean)
 
@@ -71,28 +75,25 @@ This is an example of how to use the find_swaps function to identify and visuali
 Note: this function will drop NA values from the data, while converting columns to numeric. 
 
 ```{r example}
-#Load libraries 
+### Load libraries 
 library(ggplot2)
 library(tidyr)
 library(cleanR)
 
-# Load the data
-plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+data("plants_clean")
 
-### Swaps function 
+
+### Apply the identify_and_plot_swaps function
 swaps_output <- identify_and_plot_swaps(
-  data = plants_clean, 
-  weight_columns = c("X10_6_weight", "X10_9_weight"), 
-  key_column = "pot_id", 
-  plot_filename = "/cloud/project/cleanR/inst/extdata/swaps_plot.png", 
-  
-  ###This threshold will vary according to your data 
-  ### Since my data deals with plants, water weight can change by 100 grams or more per day, so my threshold is 100. Choose your threshold accordingly. 
-  weight_diff_threshold = 100)
+  data = plants_clean,
+  weight_columns = c("X10_6_weight", "X10_9_weight"),
+  key_column = "pot_id",  
+  plot_filename = "swaps_plot.png",  
+  weight_diff_threshold = 100  
+)
 
 
-
-# View the swaps_output
+### View the flagged swaps
 print(swaps_output$swaps)
 ```
 

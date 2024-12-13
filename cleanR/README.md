@@ -38,34 +38,38 @@ via the following functions:
     potential swap that took place, rather than looking at huge swaths
     of numbers.
 
-Additionally, this package contains a 4th function that is particularly
-suited to example dataset provided (plants_clean). This is a cut of data
-collected by me for a future project. In this dataset, plants are
-tracked by weight over months (only two days are included in the cut of
-data used for the example), and have been divided into two lines that
-will eventually receive different watering treatments to achieve
-conditions of drought (treatment:“d”) or control (treatment: “w”). The
-plants used are the result of artificial selection done to create
-families that are either self-incompatible -\> SI (the plant cannot
-reproduce with itself), self-compatible -\> SC(the plant can reproduce
-with itself), or control -\> C. This will become important later on in
-my project when we begin to do experiments on them to understand how
-their reproductive abilities are responding to the drought treatment, so
-it is important that these lines are correctly labelled in the dataset.
-Multiple people in my lab work with these lines as well, so this
-function is applicable to other datasets. Because of that, I wanted to
-create a function that addressed this specific feature of my data. This
-is function \#4 and it identifies invalid lines in the data, prints out
-the result to the user and suggests the line IDs that the should be
-instead.
+4.  Identiying invalid lines (specific to my example dataset):
+    Additionally, this package contains a 4th function that is
+    particularly suited to example dataset provided (plants_clean). This
+    is a cut of data collected by me for a future project. In this
+    dataset, plants are tracked by weight over months (only two days are
+    included in the cut of data used for the example), and have been
+    divided into two lines that will eventually receive different
+    watering treatments to achieve conditions of drought (treatment:“d”)
+    or control (treatment: “w”). The plants used are the result of
+    artificial selection done to create families that are either
+    self-incompatible -\> SI (the plant cannot reproduce with itself),
+    self-compatible -\> SC(the plant can reproduce with itself), or
+    control -\> C. This will become important later on in my project
+    when we begin to do experiments on them to understand how their
+    reproductive abilities are responding to the drought treatment, so
+    it is important that these lines are correctly labelled in the
+    dataset. Multiple people in my lab work with these lines as well, so
+    this function is applicable to other datasets. Because of that, I
+    wanted to create a function that addressed this specific feature of
+    my data. This is function \#4 and it identifies invalid lines in the
+    data, prints out the result to the user and suggests the line IDs
+    that the should be instead.
 
 ## Installation
 
 Here’s how you can install the cleanR package:
 
 ``` r
-# Install devtools if not already installed
-install.packages("devtools")
+# Install the following packages:
+install.packages(c("devtools", "readr", "stringdist"))
+
+
 
 # Install cleanR from GitHub
 devtools::install_github("niafaithlewis/cleanR/cleanR")
@@ -80,7 +84,16 @@ Here is an example of the invalid lines function in action:
 library(cleanR)
 
 ### Load data
-plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+data("plants_clean")
+
+head(plants_clean)
+#>   treatment pot_id line mom dad tray_id target_weight X10_6_weight X10_9_weight
+#> 1         d      1   C1  86  59       1        388.90        288.7          293
+#> 2       wet      2  SI1 672 697       1        687.50        417.0        423.5
+#> 3         w      3   C1  27 100       1        653.15        263.5        273.5
+#> 4         w      4   C2  60  77       1        653.40        433.0          460
+#> 5         w      5   C1  27 100       1        679.80        421.5         dead
+#> 6        dr      6  SI1 610 667       1        387.30        322.0        324.5
 
 invalid_lines <- detect_invalid_lines(plants_clean)
 #> The following rows contain invalid 'line' values:
@@ -103,24 +116,22 @@ Note: this function will drop NA values from the data, while converting
 columns to numeric.
 
 ``` r
-#Load libraries 
+### Load libraries 
 library(ggplot2)
 library(tidyr)
 library(cleanR)
 
-# Load the data
-plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+data("plants_clean")
 
-### Swaps function 
+
+### Apply the identify_and_plot_swaps function
 swaps_output <- identify_and_plot_swaps(
-  data = plants_clean, 
-  weight_columns = c("X10_6_weight", "X10_9_weight"), 
-  key_column = "pot_id", 
-  plot_filename = "/cloud/project/cleanR/inst/extdata/swaps_plot.png", 
-  
-  ###This threshold will vary according to your data 
-  ### Since my data deals with plants, water weight can change by 100 grams or more per day, so my threshold is 100. Choose your threshold accordingly. 
-  weight_diff_threshold = 100)
+  data = plants_clean,
+  weight_columns = c("X10_6_weight", "X10_9_weight"),
+  key_column = "pot_id",  
+  plot_filename = "swaps_plot.png",  
+  weight_diff_threshold = 100  
+)
 #> Warning in FUN(X[[i]], ...): NAs introduced by coercion
 #> Warning in identify_and_plot_swaps(data = plants_clean, weight_columns =
 #> c("X10_6_weight", : Some weight values were not numeric and have been converted
@@ -131,8 +142,7 @@ swaps_output <- identify_and_plot_swaps(
 #> (`geom_point()`).
 
 
-
-# View the swaps_output
+### View the flagged swaps
 print(swaps_output$swaps)
 #>   treatment pot_id line mom dad tray_id target_weight X10_6_weight X10_9_weight
 #> 8         w      8   V1 106 111       2         674.2        526.0          399

@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-# Identifying Typos in Text Data
+# Identifying Typos 
 
 This vignette will describe how to use the `identify_typos` function from the `cleanR` package to identify potential typos in text data.
 

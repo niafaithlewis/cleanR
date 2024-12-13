@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-# Coercing Numeric Columns and Handle Special Cases
+## Coercing Numeric Columns and Handle Special Cases
 
 This vignette demonstrates how to use the `coerce_numeric_columns` function from the `cleanR` package. 
 
