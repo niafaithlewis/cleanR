@@ -1,6 +1,6 @@
 library(readr)
 
-plants_test <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+plants_test <- read.csv("cleanR/data-raw/plants_test.csv")
 
 
 plants_clean <- plants_test
