@@ -68,7 +68,7 @@ Here’s how you can install the cleanR package:
 install.packages("devtools")
 
 # Install cleanR from GitHub
-devtools::install_github("niafaithlewis/cleanR")
+devtools::install_github("niafaithlewis/cleanR/cleanR")
 ```
 
 ## Example 1
