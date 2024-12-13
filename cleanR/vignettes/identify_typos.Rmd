@@ -1,0 +1,78 @@
+---
+title: "Identifying Typos in Text Data"
+author: "Nia Faith Lewis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Identifying Typos in Text Data}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Identifying Typos in Text Data
+
+This vignette will describe how to use the `identify_typos` function from the `cleanR` package to identify potential typos in text data.
+
+This function analyzes a character column to identify potential typos by using string length and distance checks against the most common string in that column (which it uses as the non-typo string).
+
+## Introduction
+
+When working with textual data that is input by the user, typos are common and to be expected, especially in large datasets. The `identify_typos` function can help identify these potential errors using:
+
+1. **String length**: Words that deviate significantly in length from the average or most frequent length are flagged.
+
+2. **String distance**: Words that are similar to other words but not identical (based on Jaro-Winkler distance) are flagged. This allows for small character differences to be flagged. For example, in the plants_clean dataset, as you will see in a detailed example below, under the Treatment column, the possibilities are "w" and "d" meaning wet and dry. However, if some msitakenly inputs "dr", even though iot only differs by one character, it will be flagged as a typo. 
+
+## Function Overview
+
+### Parameters:
+- `data`: A character vector or a column from a dataframe containing the text data to check.
+- OPTIONAL: `expected_values`: If the user already knows the values that should be in that column, they can input those and the function will flag anything that deviated from those expected values as potential typos. This is not a required input for the function.
+
+## Example
+
+### Loading the Data
+
+First I load my example dataset: 
+
+```{r}
+###Load libary 
+library(cleanR)
+
+# Sample data
+plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+
+# Preview the data
+head(plants_clean)
+```
+
+In the treatment column, two values are possible "w" and "d". Anything that deviates from either of those should be flagged. In this case, the function identifies the two most frequent values in the dataset, which are "w" and "d" and treats those as the non-typo strings to compare everything else against. 
+
+Now we use the function, and return its results as a dataframe. 
+```{r}
+# Identify typos in the 'treatment' column
+potential_typos <- identify_typos(plants_clean$treatment)
+
+# Print the result
+print(potential_typos)
+```
+
+If the user wanted to input expected values to serve as the non-typo strings to compare everything else against, here is an example how that would be done: 
+
+```{r}
+typos <- identify_typos(plants_clean$treatment, expected_values = c("w", "d"))
+
+print(typos)
+```
+
+Here is another example of the expected values with a small custom example dataset. In this example, the user set "wet" and "dry" as their expected values,, so anything deviating from those will be flagged. 
+
+```{r}
+example_data <- c("dry", "dr", "d", "wet", "wet", "we", "wet", "dry", "dry")
+
+###Apply function with expected values 
+example_typos <- identify_typos(example_data, expected_values = c("wet", "dry"))
+
+print(example_typos)
+
+```
+
+

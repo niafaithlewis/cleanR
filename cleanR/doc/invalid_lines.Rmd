@@ -1,0 +1,57 @@
+---
+title: "Detecting Invalid 'Line' Values"
+author: "Your Name"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Detecting Invalid 'Line' Values}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Detecting Invalid 'Line' Values
+
+In this vignette, we will demonstrate how to use the `detect_invalid_lines` function from the `cleanR` package to identify invalid `line` values in your dataset. This function helps flag rows where the `line` column does not match the expected patterns, such as `"C1"`, `"SC1"`, or `"SI1"`. It also suggests potential corrections for these invalid entries.
+
+## Function Overview
+
+The function `detect_invalid_lines` checks the `line` column of your dataset for values that do not match one of the valid patterns. If any invalid values are found, the function:
+- Identifies the invalid rows.
+- Suggests possible corrections based on string distance (e.g., using the Jaro-Winkler method).
+
+### Parameters:
+- `data`: A data frame that contains the dataset with a `line` column.
+- The function will return a data frame with the invalid rows, including suggested corrections for each invalid `line` value.
+
+## Example Usage
+
+### Loading the Data
+
+Let’s first load a sample dataset and inspect the `line` column:
+
+```{r}
+library(cleanR)
+
+# Example dataset
+mousedata <- data.frame(
+  treatment = c("d", "d", "d", "wet", "d", "w"),
+  pot_id = c(1, 2, 3, 4, 5, 6),
+  line = c("C1", "SXX1", "SC1", "SI1", "C1", "C1"),
+  mom = c(86, 225, 231, 672, 2, 27),
+  dad = c(59, 258, 245, 697, 44, 100),
+  tray_id = c(1, 10, 1, 1, 1, 1),
+  dry_weight = c(165, 168, 158, 170, 172, 160)
+)
+
+# Preview the data
+head(mousedata)
+```
+
+Now, applying the function to the dataset 
+```{r}
+# Detect invalid 'line' values
+invalid_lines <- detect_invalid_lines(mousedata)
+
+# Print the result
+print(invalid_lines)
+```
+
+Explanation of Output 

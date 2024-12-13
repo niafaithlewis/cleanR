@@ -1,0 +1,74 @@
+---
+title: "Coercing Numeric Columns"
+author: "Nia Faith Lewis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Coercing Numeric Columns}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Coercing Numeric Columns and Handle Special Cases
+
+This vignette demonstrates how to use the `coerce_numeric_columns` function from the `cleanR` package. 
+
+This function takes a column that a user assumes should have numeric inputs, but which may have non-numeric values such as word (example: "dead"). Regular coercion can turn values into NAs, which can disrupt any operations you might want to perform on the data down the line such as mathematical operations. This function coerces the column to numeric. It alerts the user of where there were non-numeric values and also prints the class changes for each observation, making it easy to track any changes that occur.
+
+## Function Overview
+
+The `coerce_numeric_columns` function:
+- Takes user input for a column in a dataset that is expected to be numeric.
+- Identifies values stored as text (including numbers stored as strings).
+- Coerces these values to numeric values.
+- Alerts the user of problematic values (such as those that were coerced to NA and were dropped)
+- Prints out the class changes (before and after coercion) for each observation.
+
+This function is useful when dealing with datasets where some numeric values might be incorrectly stored as text (e.g., due to data import from external files like CSVs or Excel). It is also useful for dealing with datasets where what is being observed has the potential to die over  the course of the study. Values such as "dead" in columns that should be numeric can be coerced to NA and disrupt math operations that are performed on the dataset later on. 
+
+### Parameters:
+- `data`: A data frame containing the dataset.
+- `numeric_columns`: A character vector specifying the column names that are expected to be numeric.
+
+The function will return the updated data frame with the specified columns coerced to numeric values. It might alos output console messages alerting the user of any observations that have been dropped. 
+
+## Example
+
+### Loading the Data
+
+First, I load my example dataset:
+
+```{r}
+### Load library
+library(cleanR)
+
+# Example dataset
+plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+
+# Preview the data
+head(plants_clean)
+
+```
+
+Coercing Numeric Columns
+
+I can apply the coerce_numeric_columns function to the dataset to ensure that certain columns (like that for October 9 weight "X10_9_weight) are numeric:
+
+```{r}
+# Coerce the target_Iight column to numeric
+updated_data <- coerce_numeric_columns(
+  data = plants_clean, 
+  numeric_columns = c("X10_9_weight")
+)
+
+```
+
+For example, in this column, one of the plants died, and instead of a numeric value for its weight, I inputted "dead". The function would alert the user about these values and print the original and new values for each observation.
+
+Example Output
+The printed table will show something like this:
+
+```{r}
+# Print the updated data
+print(updated_data)
+```
+
+

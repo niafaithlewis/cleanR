@@ -1,0 +1,61 @@
+---
+title: "Identifying Typos in Text Data"
+author: "Your Name"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Identifying Typos in Text Data}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Identifying Typos in Text Data
+
+In this vignette, we will explore how to use the `identify_typos` function from the `cleanR` package to identify potential typos in text data based on string lengths and string distances.
+
+## Introduction
+
+When working with textual data, it's common to encounter typos, inconsistencies, or other data quality issues. The `identify_typos` function can help identify these potential errors using two main approaches:
+1. **String length**: Words that deviate significantly in length from the average or most frequent length are flagged.
+2. **String distance**: Words that are similar to other words but not identical (based on Jaro-Winkler distance) are flagged.
+
+## Function Overview
+
+The function `identify_typos` checks for two types of issues in text data:
+- **Length deviations**: Words whose lengths differ from the typical length in the data.
+- **String distances**: Words that are close in spelling to others.
+
+### Parameters:
+- `data`: A character vector or a column from a dataframe containing the text data to check.
+- `length_threshold`: The threshold for length deviations. Words with a length difference greater than this threshold are flagged.
+- `distance_threshold`: The Jaro-Winkler string distance threshold for identifying similar words.
+
+## Example Usage
+
+### Loading the Data
+
+Let's first load a sample dataset to demonstrate the function:
+
+```{r}
+library(cleanR)
+
+# Sample data
+plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+
+# Preview the data
+head(plants_clean)
+
+
+# Identify typos in the 'treatment' column
+potential_typos <- identify_typos(plants_clean$treatment)
+
+# Print the result
+print(potential_typos)
+
+
+# Example data with potential typos
+data <- c("d", "dry", "w", "wet", "d", "w", "dr", "d")
+
+# Identify typos in the custom data
+potential_typos <- identify_typos(data)
+
+# Print the result
+print(potential_typos)

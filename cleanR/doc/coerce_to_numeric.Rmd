@@ -1,0 +1,71 @@
+---
+title: "Coercing Numeric Columns and Printing Class Changes"
+author: "Your Name"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Coercing Numeric Columns and Printing Class Changes}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Coercing Numeric Columns and Printing Class Changes
+
+In this vignette, we demonstrate how to use the `coerce_numeric_columns` function from the `cleanR` package to ensure that the columns in your dataset that are expected to be numeric are correctly coerced. The function also prints the class changes for each observation, making it easy to track any modifications.
+
+## Function Overview
+
+The `coerce_numeric_columns` function:
+- Identifies columns in a data frame that are expected to be numeric.
+- Detects values stored as text (e.g., numbers stored as strings).
+- Coerces these values to numeric values.
+- Prints out the class changes (before and after coercion) for each observation.
+
+This function is useful when dealing with datasets where some numeric values might be incorrectly stored as text (e.g., due to data import from external files like CSVs or Excel).
+
+### Parameters:
+- `data`: A data frame containing the dataset.
+- `numeric_columns`: A character vector specifying the column names that are expected to be numeric.
+
+The function will return the updated data frame with the specified columns coerced to numeric values.
+
+## Example Usage
+
+### Loading the Data
+
+First, we load a sample dataset:
+
+```{r}
+library(cleanR)
+
+# Example dataset
+plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+
+# Preview the data
+head(plants_clean)
+```
+Coercing Numeric Columns
+We can apply the coerce_numeric_columns function to the dataset to ensure that certain columns (like target_weight) are numeric:
+
+```{r}
+# Coerce the target_weight column to numeric
+updated_data <- coerce_numeric_columns(
+  data = plants_clean, 
+  numeric_columns = c("target_weight")
+)
+
+# Print the updated data
+print(updated_data)
+```
+
+xplanation of Output
+The function will:
+
+Identify the target_weight column and check for any non-numeric values (such as text-formatted numbers).
+Coerce the non-numeric values into numeric values where possible.
+Print a table showing the class changes for each observation, indicating whether the value was originally text and has been converted to numeric.
+For example, if some values in the target_weight column were mistakenly stored as text (e.g., "123.5"), the function would alert the user about these values and print the original and new values for each observation.
+
+Example Output
+The printed table will show something like this:
+
+
+

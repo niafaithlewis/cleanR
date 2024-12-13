@@ -1,0 +1,51 @@
+---
+title: "Detecting Invalid 'Line' Values"
+author: "Nia Faith Lewis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Detecting Invalid 'Line' Values}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Detecting Invalid 'Line' Values
+
+This vignette will demonstrate how to use the `detect_invalid_lines` function from the `cleanR` package to identify invalid `line` values in the plants_clean dataset that is specific to this package. This function cannot be applied to just any datatset, since it depends on a feature specific to the plants dataset included. 
+
+This plants_clean dataset contains a cut of data currently being collected by me for a future project. Plants are tracked by weight over months (only two days are included in the cut of data used for the example), and have been divided into two lines that will eventually receive different watering treatments to achieve conditions of drought (treatment:"d") or control (treatment: "w"). The plants used are the result of artificial selection done to create families that are either self-incompatible -> SI (the plant cannot reproduce with itself), self-compatible -> SC(the plant can reproduce with itself), or control -> C. These line IDs will become important later on in my project when we begin to do experiments on them to understand how their reproductive abilities are responding to the drought treatment, so it is important that these lines are correctly labelled in the dataset. Multiple people in my lab work with these lines as well, so this function is applicable to other datasets, but they are specific datasets. This is function identifies invalid lines in the data, prints out the result to the user and suggests the line IDs that they should be instead. 
+
+This function flags rows where the `line` column does not match the expected patterns, such as `"C1"`, `"SC1"`, or `"SI1"`, then suggests corrections. These are the only possible IDs for these lines as they are used in my (and other lab colleages') research, so this function is made to be very specific. 
+
+## Function Overview
+
+The function `detect_invalid_lines` checks the `line` column of the dataset for values that do not match one of the valid patterns. If any invalid values are found, the function:
+- Identifies the invalid rows.
+- Suggests possible corrections based on string distance (e.g., using the Jaro-Winkler method).
+
+### Parameters:
+- `data`: A data frame that contains the dataset with a `line` column.
+- The function will return a data frame with the invalid rows, including suggested corrections for each invalid `line` value.
+
+## Example 
+
+### Loading the Data
+
+First, I load  my example dataset that contains the line column. 
+
+```{r}
+### Load package  
+library(cleanR)
+
+plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+
+head(plants_clean)
+```
+
+Apply the function: 
+```{r}
+invalid_lines <- detect_invalid_lines(plants_clean)
+```
+
+It printed out a dataframe of the 3 possible instances of invalid lines and suggested corrections for each. 
+
+
+Explanation of Output 

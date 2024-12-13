@@ -1,0 +1,25 @@
+#' Plants Dataset
+#'
+#' A dataset tracking weights of plants over two days. The plants are separated into two watering treatments,
+#' "d" -> dry or drought conditions, and "w" -> wet or well-watered or control conditions.  
+#'
+#' @docType data
+#' @name plants_clean
+#' @usage data(plants_clean)
+#' @format A data frame with 10 rows and 9 columns:
+#' \describe{
+#'   \item{treatment}{Factor indicating the treatment the plant is subjected to. "d" indicates drought, "w" indicates well-watered or control.}
+#'   \item{pot_id}{Character string describing the ID of the individual plant.}
+#'   \item{line}{Character variable indicating the artificial selection line the plant belongs to (e.g. "SC1" : self-compatible (the plant has been bred to be able to reproduce with itself), SI1 : self-incompatible (the plant cannot reproduce with itself), C : control).}
+#'   \item{mom}{Numeric variable for the ID of the plant used as the ovule donor (Mom)}
+#'   \item{dad}{Numeric variable for the ID of the plant used as the pollen donor (Dad).}
+#'   \item{tray_id}{Numeric variable indicating the location of the plant in the greenhouse.}
+#'  \item{target_weight}{Numeric variable for the target weight of the plant in grams}
+#'  \item{X10_6_weight}{Numeric variable for the plant's weight in grams on October 6 (2024).}
+#'  \item{X10_9_weight}{Numeric variable for the plant's weight in grams on October 9 (2024).}
+#'   }
+#' @source Data generated from an experiment currently being done by Nia Faith Lewis, 
+#' on plant reproductive responses to drought-induced environmental stress.
+
+plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+save(plants_clean, file = "/cloud/project/cleanR/data/plants_clean.rda")
