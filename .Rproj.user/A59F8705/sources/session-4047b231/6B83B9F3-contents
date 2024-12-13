@@ -1,7 +1,8 @@
 # Load the required packages
 library(cleanR)
 
-plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
+file_path <- system.file("extdata", "plants_test.csv", package = "cleanR")
+plants_clean <- read.csv(file_path)
 
 head(plants_clean)
 

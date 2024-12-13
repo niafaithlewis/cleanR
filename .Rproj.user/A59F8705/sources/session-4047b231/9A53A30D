@@ -1,0 +1,26 @@
+{
+    "id": "9A53A30D",
+    "path": "/cloud/project/cleanR/vignettes/invalid_lines.Rmd",
+    "project_path": "cleanR/vignettes/invalid_lines.Rmd",
+    "type": "r_markdown",
+    "hash": "4283852680",
+    "contents": "",
+    "dirty": false,
+    "created": 1734067529703.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "38,35",
+        "scrollLine": "32"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1734067536,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1734067536452,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,33 @@
+Package: cleanR
+Title: Tools for Data Wrangling
+Version: 0.0.0.9000
+Authors@R: 
+    person("Nia", "Faith Lewis", , "nlewis@college.harvard.edu", role = c("aut", "cre"))
+Description: This is a package meant to assist in wrangling datasets and identifying potential sources of error, including typos, inconcistsnt class types in a cloumn, invalid IDs and swapping of data across rows. 
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    stringr, 
+    dplyr, 
+    ggplot2, 
+    tidyr, 
+    rlang, 
+    viridis
+Depends: 
+    R (>= 3.5)
+LazyData: true
+Suggests:
+    stringdist, 
+    testthat, 
+    devtools, 
+    roxygen2, 
+    knitr, 
+    rmarkdown 
+VignetteBuilder: knitr
+Data: plants_test
+
+    
+    
+    

@@ -1,14 +1,14 @@
 {
-    "id": "6B83B9F3",
-    "path": "/cloud/project/cleanR/tests/typostest.R",
-    "project_path": "cleanR/tests/typostest.R",
+    "id": "A0602D52",
+    "path": "/cloud/project/cleanR/tests/coerce_to_numeric_test.R",
+    "project_path": "cleanR/tests/coerce_to_numeric_test.R",
     "type": "r_source",
-    "hash": "751426167",
+    "hash": "2584156999",
     "contents": "",
     "dirty": false,
-    "created": 1734062414427.0,
+    "created": 1734067400265.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 8,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
@@ -16,11 +16,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1734067478,
+    "lastKnownWriteTime": 1734067435,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1734067478781,
+    "last_content_update": 1734067435827,
     "read_only": false,
     "read_only_alternatives": []
 }
