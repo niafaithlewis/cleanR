@@ -14,45 +14,35 @@
 coerce_numeric_columns <- function(data, numeric_columns) {
   for (col in numeric_columns) {
     if (!col %in% colnames(data)) {
-      warning(paste("Column", col, "not found in the dataset. Skipping."))
+      warning(paste("Column", col, "was not found in the dataset."))
       next
     }
     
-    ### Extract column values as character 
+    ### Extract column values as character first 
     raw_values <- as.character(data[[col]])
     
-    ### Coerce all values to numeric
+    ### Coerce everything to numeric
     coerced_values <- suppressWarnings(as.numeric(raw_values))
     
-    ### Find problematic values
+    ### Identify values that couldn't be coerced
     is_problematic <- is.na(coerced_values) & !is.na(raw_values)
     problematic_values <- raw_values[is_problematic]
     
     
-    ### Warnings
-    if (length(problematic_values) > 0) {
-      message(paste("Non-numeric values detected in column", col, ":"))
-      print(data.frame(Observation = which(is_problematic), Value = problematic_values))
-    }
-    
-    ### Drop rows with problematic values
+    ### Drop rows that could not be coerced 
     problematic_rows <- which(is_problematic)
     if (length(problematic_rows) > 0) {
-      
-      ### Notify user of dropped rows 
       message(paste("Dropping rows:", paste(problematic_rows, collapse = ", "), 
                     "due to non-numeric values in column", col, "."))
       data <- data[-problematic_rows, ]
-
-      next
     }
     
-    ### Assign coerced values back to the column
+    ### Drop all NAs
+    coerced_values <- suppressWarnings(as.numeric(data[[col]]))
     data[[col]] <- coerced_values
+    data <- data[!is.na(data[[col]]), ]  
   }
   
-  ### Return dataset
   return(data)
 }
-
 
