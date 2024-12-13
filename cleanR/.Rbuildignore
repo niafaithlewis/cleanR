@@ -5,3 +5,6 @@
 ^LICENSE\.md$
 ^doc$
 ^Meta$
+^cleanR\.Rcheck$
+^cleanR.*\.tar\.gz$
+^cleanR.*\.tgz$

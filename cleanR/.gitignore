@@ -1,0 +1,4 @@
+.Rproj.user
+cleanR.Rcheck/
+cleanR*.tar.gz
+cleanR*.tgz
