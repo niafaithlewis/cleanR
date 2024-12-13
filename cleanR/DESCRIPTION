@@ -14,7 +14,8 @@ Imports:
     ggplot2, 
     tidyr, 
     rlang, 
-    viridis 
+    viridis, 
+    usethis
 Depends: 
     R (>= 3.5)
 LazyData: true
