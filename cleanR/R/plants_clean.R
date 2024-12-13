@@ -21,5 +21,5 @@
 #' @source Data generated from an experiment currently being done by Nia Faith Lewis, 
 #' on plant reproductive responses to drought-induced environmental stress.
 
-plants_clean <- read.csv("/cloud/project/cleanR/cleanR/data-raw/plants_test.csv")
-save(plants_clean, file = "/cloud/project/cleanR/cleanR/data/plants_clean.rda")
+plants_clean <- read.csv("/data-raw/plants_test.csv")
+save(plants_clean, file = "/data/plants_clean.rda")
