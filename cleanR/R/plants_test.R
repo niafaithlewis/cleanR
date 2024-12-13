@@ -1,11 +1,11 @@
-#' Plants Dataset
+#' Plants Dataset (Raw) 
 #'
-#' A dataset tracking weights of plants over two days. The plants are separated into two watering treatments,
+#' (Raw version) A dataset tracking weights of plants over two days. The plants are separated into two watering treatments,
 #' "d" -> dry or drought conditions, and "w" -> wet or well-watered or control conditions.  
 #'
 #' @docType data
-#' @name plants_clean
-#' @usage data(plants_clean)
+#' @name plants_test
+#' @usage data(plants_test)
 #' @format A data frame with 10 rows and 9 columns:
 #' \describe{
 #'   \item{treatment}{Factor indicating the treatment the plant is subjected to. "d" indicates drought, "w" indicates well-watered or control.}
@@ -18,6 +18,6 @@
 #'  \item{X10_6_weight}{Numeric variable for the plant's weight in grams on October 6 (2024).}
 #'  \item{X10_9_weight}{Numeric variable for the plant's weight in grams on October 9 (2024).}
 #'   }
-#' @source Data generated from an experiment currently being done by Nia Faith Lewis, 
+#' @source Raw data generated from an experiment currently being done by Nia Faith Lewis, 
 #' on plant reproductive responses to drought-induced environmental stress.
-"plants_clean"
+"plants_test"

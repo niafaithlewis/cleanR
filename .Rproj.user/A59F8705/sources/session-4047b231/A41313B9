@@ -3,7 +3,7 @@
     "path": "/cloud/project/cleanR/vignettes/find_swaps.Rmd",
     "project_path": "cleanR/vignettes/find_swaps.Rmd",
     "type": "r_markdown",
-    "hash": "321241763",
+    "hash": "2790826744",
     "contents": "",
     "dirty": false,
     "created": 1734067512264.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "49,35",
+        "cursorPosition": "47,20",
         "scrollLine": "41"
     },
     "folds": "",
-    "lastKnownWriteTime": 1734067519,
+    "lastKnownWriteTime": 1734069416,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1734067519053,
+    "last_content_update": 1734069416305,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -3,7 +3,7 @@
     "path": "/cloud/project/cleanR/vignettes/identify_typos.Rmd",
     "project_path": "cleanR/vignettes/identify_typos.Rmd",
     "type": "r_markdown",
-    "hash": "2841827908",
+    "hash": "3701047067",
     "contents": "",
     "dirty": false,
     "created": 1734067521463.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "41,35",
+        "cursorPosition": "39,20",
         "scrollLine": "36"
     },
     "folds": "",
-    "lastKnownWriteTime": 1734067528,
+    "lastKnownWriteTime": 1734069421,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1734067528079,
+    "last_content_update": 1734069421465,
     "read_only": false,
     "read_only_alternatives": []
 }

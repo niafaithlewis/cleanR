@@ -20,9 +20,4 @@
 #'   }
 #' @source Data generated from an experiment currently being done by Nia Faith Lewis, 
 #' on plant reproductive responses to drought-induced environmental stress.
-
-file_path <- system.file("extdata", "plants_test.csv", package = "cleanR")
-plants_test <- read.csv(file_path)
-
-plants_clean <- read.csv(file_path)
-save(plants_clean, file = "data/plants_clean.rda")
+"plants_clean"

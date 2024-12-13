@@ -1,0 +1,24 @@
+{
+    "id": "852E2A44",
+    "path": "/cloud/project/cleanR/R/coerce_to_numeric.R",
+    "project_path": "cleanR/R/coerce_to_numeric.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1734068889140.0,
+    "source_on_save": false,
+    "relative_order": 13,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1734061821,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1734061821,
+    "read_only": false,
+    "read_only_alternatives": []
+}

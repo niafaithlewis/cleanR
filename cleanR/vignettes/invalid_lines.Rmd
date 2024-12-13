@@ -35,8 +35,7 @@ First, I load  my example dataset that contains the line column.
 ### Load package  
 library(cleanR)
 
-file_path <- system.file("extdata", "plants_test.csv", package = "cleanR")
-plants_clean <- read.csv(file_path)
+data("plants_clean")
 
 head(plants_clean)
 ```

@@ -1,0 +1,6 @@
+"0","### Load library"
+"0","library(cleanR)"
+"0",""
+"0","data(""plants_clean"")"
+"0",""
+"0","head(plants_clean)"
