@@ -40,12 +40,17 @@ First, I load my example dataset:
 ### Load library
 library(cleanR)
 
-# Example dataset
 plants_clean <- read.csv("/cloud/project/cleanR/data-raw/plants_test.csv")
 
-# Preview the data
 head(plants_clean)
+```
 
+If I try to compute the mean of one of my weight columns, namely X10_9_weight, I get an error message because it does not only contain numeric values even though I expect it to be a numeric column:
+
+```{r}
+mean_weight <- mean("X10_9_weight")
+
+class(plants_clean$X10_9_weight)
 ```
 
 Coercing Numeric Columns
@@ -53,7 +58,7 @@ Coercing Numeric Columns
 I can apply the coerce_numeric_columns function to the dataset to ensure that certain columns (like that for October 9 weight "X10_9_weight) are numeric:
 
 ```{r}
-# Coerce the target_Iight column to numeric
+### Coerce the X10_9_weight column to numeric
 updated_data <- coerce_numeric_columns(
   data = plants_clean, 
   numeric_columns = c("X10_9_weight")
@@ -64,11 +69,21 @@ updated_data <- coerce_numeric_columns(
 For example, in this column, one of the plants died, and instead of a numeric value for its weight, I inputted "dead". The function would alert the user about these values and print the original and new values for each observation.
 
 Example Output
-The printed table will show something like this:
+The printed table will show something like this (not the missing row 5 which was dead):
 
 ```{r}
-# Print the updated data
+### Print the updated data
 print(updated_data)
+```
+
+Now, I can apply math operations on my weight column "X10_9_weight" from my new updated_data dataframe, and get numeric results. 
+
+```{r}
+mean_updated <- mean(updated_data$X10_9_weight)
+
+print(mean_updated)
+
+class(updated_data$X10_9_weight)
 ```
 
 
